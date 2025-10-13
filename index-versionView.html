@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba en Modo Vista - Mi Repo de GitHub</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; }
+        #placeholder { height: 100%; }
+    </style>
+    <!-- Asumiendo que tu Docker corre en el puerto 8080 para evitar conflictos -->
+    <script type="text/javascript" src="http://localhost:8080/web-apps/apps/api/documents/api.js"></script>
+</head>
+<body>
+    <div id="placeholder"></div>
+    <script type="text/javascript">
+        // --- PEGA TU URL "RAW" AQUÍ ---
+        // Reemplaza esta URL de ejemplo con la que copiaste de tu repositorio.
+        const docuUrl = "https://raw.githubusercontent.com/JonaGrand/prueba-onlyoffice/refs/heads/main/dockerdocu.docx";
+
+        // Configuración mínima para abrir un documento en modo vista
+        const config = {
+            "document": {
+                "fileType": "docx",
+                "key": "mi_repo_github_modo_vista_001", // Key única
+                "title": "Mi Documento desde GitHub (Vista).docx",
+                
+                // Usamos la variable con tu URL raw
+                "url": docuUrl
+            },
+            "documentType": "word",
+            "editorConfig": {
+                // --- ¡CAMBIO CLAVE! ---
+                // Al poner 'mode' en 'view', desactivamos la edición y
+                // la necesidad de un callbackUrl para guardar.
+                "mode": "view", 
+                "lang": "es",
+                "user": {
+                    "id": "user-viewer-github",
+                    "name": "Espectador desde GitHub"
+                }
+                // No necesitamos 'callbackUrl' aquí, así que lo omitimos.
+            },
+            // Asumiendo que el contenedor Docker se inició con JWT_ENABLED=false
+            "token": ""
+        };
+
+        try {
+            var docEditor = new DocsAPI.DocEditor("placeholder", config);
+            console.log("Intentando inicializar el editor en MODO VISTA con la URL de GitHub...");
+        } catch (e) {
+            console.error("Error al inicializar el editor:", e);
+        }
+    </script>
+</body>
+</html>

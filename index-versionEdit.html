@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba con Mi Repo de GitHub</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; }
+        #placeholder { height: 100%; }
+    </style>
+    <!-- Docker corriendo en el puerto 8080 -->
+    <script type="text/javascript" src="http://localhost:8080/web-apps/apps/api/documents/api.js"></script>
+</head>
+<body>
+    <div id="placeholder"></div>
+    <script type="text/javascript">
+        // --- URL DOCUMENTO ---
+        const docuUrl = "https://raw.githubusercontent.com/JonaGrand/prueba-onlyoffice/refs/heads/main/dockerdocu.docx";
+
+        // Configuración usando tu propio documento desde GitHub
+        const config = {
+            "document": {
+                "fileType": "docx",
+                "key": "mi_repo_github_key_001", // Key unica para el docu
+                "title": "Mi Documento desde GitHub.docx",
+                
+                // URL documento
+                "url": docuUrl
+            },
+            "documentType": "word",
+            "editorConfig": {
+                // Modo edit, saltará error por no poder guardar.
+                "mode": "edit", 
+                "lang": "es",
+                "user": {
+                    "id": "user-github-test",
+                    "name": "Usuario GitHub"
+                }
+            },
+            // JWT_ENABLED=false
+            "token": ""
+        };
+
+        try {
+            var docEditor = new DocsAPI.DocEditor("placeholder", config);
+            console.log("Intentando inicializar el editor con la URL del documento");
+        } catch (e) {
+            console.error("Error al inicializar el editor:", e);
+        }
+    </script>
+</body>
+</html>

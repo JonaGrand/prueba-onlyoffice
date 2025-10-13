@@ -2,47 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Prueba de Apertura - ONLYOFFICE Docs</title>
-    <style>
-        body, html { margin: 0; padding: 0; height: 100%; }
-        #placeholder { height: 100%; }
-    </style>
-    <!-- El editor se sirve desde el mismo servidor, en el puerto 80 -->
+    <title>Prueba Manual JWT - URL Corregida</title>
+    <style> body, html { margin: 0; padding: 0; height: 100%; } #placeholder { height: 100%; } </style>
     <script type="text/javascript" src="http://localhost:8080/web-apps/apps/api/documents/api.js"></script>
 </head>
 <body>
     <div id="placeholder"></div>
     <script type="text/javascript">
-        // Configuración mínima para abrir un documento en modo visualización
+        // Esta es la URL canónica y estable para el archivo en crudo.
+        const docuUrl = "https://raw.githubusercontent.com/JonaGrand/prueba-onlyoffice/main/dockerdocu.docx";
+        
         const config = {
             "document": {
                 "fileType": "docx",
-                "key": "solo_abrir_mi_doc_003", // Nueva key para evitar caché
-                "title": "dockerdocu.docx",
-                
-                // El documento es servido por el mismo servidor en el puerto 80
-                // gracias al montaje de volumen de Docker.
-                "url": "http://localhost:8080/dockerdocu.docx"
+                "key": "jwt_manual_test_002",
+                "title": "Prueba Manual de JWT.docx",
+                "url": docuUrl // Usamos la variable con la URL corregida
             },
             "documentType": "word",
             "editorConfig": {
-                // Al poner 'mode' en 'view', desactivamos la edición y
-                // la necesidad de un callbackUrl.
                 "mode": "view", 
                 "lang": "es",
                 "user": {
-                    "id": "user-viewer",
-                    "name": "Espectador de Prueba"
+                    "id": "user-manual-jwt",
+                    "name": "Usuario con Token Manual"
                 }
             },
-            // Asumimos que el contenedor Docker se inició con JWT_ENABLED=false
-            "token": ""
+            // Token generado manualmente
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb2N1bWVudCI6eyJmaWxlVHlwZSI6ImRvY3giLCJrZXkiOiJqd3RfbWFudWFsX3Rlc3RfMDAyIiwidGl0bGUiOiJQcnVlYmEgTWFudWFsIGRlIEpXVC5kb2N4IiwidXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0pvbmFHcmFuZC9wcnVlYmEtb25seW9mZmljZS9yZWZzL2hlYWRzL21haW4vZG9ja2VyZG9jdS5kb2N4In0sImRvY3VtZW50VHlwZSI6IndvcmQiLCJlZGl0b3JDb25maWciOnsibW9kZSI6ImVkaXQiLCJsYW5nIjoiZXMiLCJ1c2VyIjp7ImlkIjoidXNlci1tYW51YWwtand0IiwibmFtZSI6IlVzdWFyaW8gY29uIFRva2VuIE1hbnVhbCJ9fX0.VALWMYlSNKRvTdepIk3v1SzBEE_7PTfuJdOLhgGWnKs"
         };
 
         try {
-            // Inicializamos el editor con la configuración mínima
             var docEditor = new DocsAPI.DocEditor("placeholder", config);
-            console.log("Editor inicializado en modo VISTA.");
+            console.log("Intentando inicializar el editor con la URL de GitHub corregida...");
         } catch (e) {
             console.error("Error al inicializar el editor:", e);
         }

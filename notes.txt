@@ -1,0 +1,17 @@
+
+APUNTES:
+
+ULR DOCUMENTO PRUEBA: https://raw.githubusercontent.com/JonaGrand/prueba-onlyoffice/refs/heads/main/dockerdocu.docx
+
+COMANDO DOCKER CORRER SIN JWT:
+    docker run -d -p 8080:80 \
+    -e JWT_ENABLED=false \
+    --name onlyoffice-test \
+    onlyoffice/documentserver
+
+COMANDO DOCKER CORRER CON JWT:
+
+
+PLATAFORMA SIMULACIÓN JWT: https://www.jwt.io/
+SECRET: mi-secreto-super-seguro-para-onlyoffice
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb2N1bWVudCI6eyJmaWxlVHlwZSI6ImRvY3giLCJrZXkiOiJqd3RfbWFudWFsX3Rlc3RfMDAxIiwidGl0bGUiOiJQcnVlYmEgTWFudWFsIGRlIEpXVC5kb2N4IiwidXJsIjoiaHR0cHM6Ly9maWxlcy5vbmx5b2ZmaWNlLmNvbS9zYW1wbGVzL3NhbXBsZS5kb2N4In0sImRvY3VtZW50VHlwZSI6IndvcmQiLCJlZGl0b3JDb25maWciOnsibW9kZSI6ImVkaXQiLCJsYW5nIjoiZXMiLCJjYWxsYmFja1VybCI6Imh0dHA6Ly9ob3N0LmRvY2tlci5pbnRlcm5hbDo4MDAwL3NhdmUtY2FsbGJhY2siLCJ1c2VyIjp7ImlkIjoidXNlci1tYW51YWwtand0IiwibmFtZSI6IlVzdWFyaW8gY29uIFRva2VuIE1hbnVhbCJ9fX0.IIgBnO3eDp6iYwcNLUaOoxJsQ4I-efAKxsOGCQ14cOw
