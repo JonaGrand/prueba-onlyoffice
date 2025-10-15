@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleccionar Documento para Editar</title>
+    <style>body { font-family: sans-serif; padding: 2em; }</style>
+</head>
+<body>
+    <h1>Documentos Disponibles</h1>
+    <p>Haz clic en un documento para abrirlo en OnlyOffice.</p>
+    <ul>
+        <% files.forEach(file => { %>
+            <li><a href="/edit?filename=<%= file %>" target="_blank"><%= file %></a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>

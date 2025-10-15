@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editando: <%= title %></title>
+    <style> body, html { margin: 0; padding: 0; height: 100%; } #placeholder { height: 100%; } </style>
+    <script type="text/javascript" src="http://localhost:8080/web-apps/apps/api/documents/api.js"></script>
+</head>
+<body>
+    <div id="placeholder"></div>
+    <script type="text/javascript">
+        var config = <%- configJSON %>;
+        try {
+            var docEditor = new DocsAPI.DocEditor("placeholder", config);
+        } catch (e) {
+            console.error("Error al inicializar el editor:", e);
+        }
+    </script>
+</body>
+</html>

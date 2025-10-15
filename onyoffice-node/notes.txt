@@ -1,0 +1,6 @@
+docker run -d -p 8080:80 \
+    -e JWT_ENABLED=true \
+    -e JWT_SECRET="mi-secreto-super-seguro-para-onlyoffice" \
+    --name onlyoffice-final \
+    --rm \
+    onlyoffice/documentserver
